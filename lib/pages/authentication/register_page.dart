@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: use_key_in_widget_constructors
 class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class RegisterView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.height * 0.25,
               child: Image.asset("assets/images/login_logo.png"),
             ),
@@ -47,7 +48,7 @@ class RegisterView extends StatelessWidget {
                     style:
                         GoogleFonts.aBeeZee(fontSize: 12, color: Colors.grey)),
                 TextButton(
-                  onPressed: () => Get.off(LoginPageView()),
+                  onPressed: () => Get.off(const LoginPageView()),
                   child: Text(
                     "Log in!",
                     style: GoogleFonts.aBeeZee(

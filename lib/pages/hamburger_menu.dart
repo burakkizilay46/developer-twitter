@@ -23,14 +23,14 @@ class HamburgerMenu extends StatelessWidget {
             ),
             child: Stack(
               children: <Widget>[
-                Align(
+                const Align(
                   alignment: Alignment.centerLeft,
                   child: CircleAvatar(
                     radius: 50,
                     backgroundImage: AssetImage('assets/images/user.png'),
                   ),
                 ),
-                Align(
+                const Align(
                   alignment: Alignment.centerRight,
                   child: Text(
                     'Burak Kızılay',
@@ -38,8 +38,8 @@ class HamburgerMenu extends StatelessWidget {
                   ),
                 ),
                 Align(
-                  alignment: Alignment.centerRight + Alignment(0, .3),
-                  child: Text(
+                  alignment: Alignment.centerRight + const Alignment(0, .3),
+                  child: const Text(
                     'Flutter Developer',
                     style: TextStyle(color: Colors.white70),
                   ),
@@ -48,10 +48,10 @@ class HamburgerMenu extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: () => Get.to(MyProfileView()),
+            onTap: () => Get.to(const MyProfileView()),
             child: Align(
               child: ListTile(
-                leading: Icon(Icons.account_circle, size: 36),
+                leading: const Icon(Icons.account_circle, size: 36),
                 title: Text("PROFILE",
                     style: GoogleFonts.raleway(
                         textStyle: Theme.of(context)
@@ -66,10 +66,10 @@ class HamburgerMenu extends StatelessWidget {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 primary: Colors.cyan,
-                shape: StadiumBorder(),
+                shape: const StadiumBorder(),
               ),
               onPressed: () {
-                Get.offAll(LoginPageView());
+                Get.offAll(const LoginPageView());
               },
               child: Text('Çıkış Yap',
                   style: GoogleFonts.raleway(

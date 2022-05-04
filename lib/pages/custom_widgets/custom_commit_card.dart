@@ -16,19 +16,19 @@ class CustomCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 25,
                   backgroundImage: AssetImage('assets/images/user.png'),
                 ),
                 //Icon(Icons.account_circle, size: 45),
-                SizedBox(width: 15),
+                const SizedBox(width: 15),
                 Text(
                   "whoiselonmusk",
                   style: GoogleFonts.raleway(),
                 ),
               ],
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -39,10 +39,10 @@ class CustomCard extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: IconButton(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.favorite,
                     ))),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
           ],
         ),
       ),

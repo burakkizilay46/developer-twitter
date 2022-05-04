@@ -10,25 +10,25 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: TextFormField(
         textInputAction: TextInputAction.next,
         style: GoogleFonts.aBeeZee(),
         decoration: InputDecoration(
-          prefixIcon: Icon(
+          prefixIcon: const Icon(
             Icons.person,
             color: Colors.cyan,
             size: 30,
           ),
           hintText: customHintText,
-          enabledBorder: OutlineInputBorder(
+          enabledBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(50)),
               borderSide: BorderSide(
                 color: Colors.cyan,
               )),
-          focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(),
-              borderRadius: BorderRadius.all(Radius.circular(50))),
+          focusedBorder: const OutlineInputBorder(
+              borderSide:  BorderSide(),
+              borderRadius:  BorderRadius.all(Radius.circular(50))),
         ),
       ),
     );

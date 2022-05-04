@@ -12,10 +12,10 @@ class Post {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['ownerId'] = this.ownerId;
-    data['postId'] = this.postId;
-    data['postTitle'] = this.postTitle;
+    final Map<String, dynamic> data =  Map<String, dynamic>();
+    data['ownerId'] = ownerId;
+    data['postId'] = postId;
+    data['postTitle'] = postTitle;
     return data;
   }
 }
