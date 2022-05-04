@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:dev_commit/model/post_model.dart';
 import 'package:dev_commit/pages/custom_widgets/custom_commit_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -56,7 +57,9 @@ class MyProfileView extends StatelessWidget {
           Container(
             height: MediaQuery.of(context).size.height * 0.6,
             child: ListView.builder(itemBuilder: ((context, index) {
-              return CustomCommitCardView();
+              return CustomCard(
+                post: Post(),
+              );
             })),
           ),
         ],

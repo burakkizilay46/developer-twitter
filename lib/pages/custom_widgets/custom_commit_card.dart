@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CustomCommitCardView extends StatefulWidget {
-  @override
-  State<CustomCommitCardView> createState() => _CustomCommitCardViewState();
-}
+import '../../model/post_model.dart';
 
-class _CustomCommitCardViewState extends State<CustomCommitCardView> {
-  bool isClicked = false;
+class CustomCard extends StatelessWidget {
+  const CustomCard({Key? key, required this.post}) : super(key: key);
+
+  final Post post;
 
   @override
   Widget build(BuildContext context) {
@@ -23,23 +22,26 @@ class _CustomCommitCardViewState extends State<CustomCommitCardView> {
                 ),
                 //Icon(Icons.account_circle, size: 45),
                 SizedBox(width: 15),
-                Text("whoiselonmusk" ,style: GoogleFonts.raleway(),),
+                Text(
+                  "whoiselonmusk",
+                  style: GoogleFonts.raleway(),
+                ),
               ],
             ),
             SizedBox(height: 10),
             Align(
                 alignment: Alignment.centerLeft,
-                child: Text("Everything is Widget Bro!" ,style: GoogleFonts.aBeeZee(),)),
+                child: Text(
+                  '${post.postTitle}',
+                  style: GoogleFonts.aBeeZee(),
+                )),
             Align(
                 alignment: Alignment.centerRight,
                 child: IconButton(
-                  onPressed: () {
-                    isClicked = !isClicked;
-                    setState(() {});
-                  },
-                  icon: Icon(Icons.favorite,
-                      color: isClicked ? Colors.red : Colors.grey),
-                )),
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.favorite,
+                    ))),
             SizedBox(height: 5),
           ],
         ),
