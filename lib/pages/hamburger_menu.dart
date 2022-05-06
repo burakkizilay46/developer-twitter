@@ -48,7 +48,7 @@ class HamburgerMenu extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: () => Get.to(const MyProfileView()),
+            onTap: () => Get.to( MyProfileView()),
             child: Align(
               child: ListTile(
                 leading: const Icon(Icons.account_circle, size: 36),
