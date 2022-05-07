@@ -19,6 +19,7 @@ class LoginPageView extends StatefulWidget {
 
 @override
 class _LoginPageViewState extends State<LoginPageView> {
+  @override
   void initState() {
     super.initState();
     isLogin = SharedPrefs.getIsLogin;

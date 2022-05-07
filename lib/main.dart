@@ -1,5 +1,4 @@
-import 'package:dev_commit/pages/authentication/login_page.dart';
-import 'package:dev_commit/pages/home_page.dart';
+import 'package:dev_commit/pages/splesh_screen.dart';
 import 'package:dev_commit/shared/shared_prefs.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark(),
-        home:
-            SharedPrefs.getIsLogin == true ? HomePageView() : LoginPageView());
+        home: const SpleshScreenView());
+    //SharedPrefs.getIsLogin == true ? HomePageView() : LoginPageView());
   }
 }
