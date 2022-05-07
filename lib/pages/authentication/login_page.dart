@@ -1,16 +1,28 @@
 import 'package:dev_commit/pages/authentication/register_page.dart';
-import 'package:dev_commit/pages/authentication/widgets/custom_text_field.dart';
 import 'package:dev_commit/pages/home_page.dart';
 import 'package:dev_commit/service/firebase_auth_service.dart';
+import 'package:dev_commit/shared/shared_prefs.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 TextEditingController _emailController = TextEditingController();
 TextEditingController _passwordController = TextEditingController();
+bool isLogin = false;
 
-class LoginPageView extends StatelessWidget {
+class LoginPageView extends StatefulWidget {
   const LoginPageView({Key? key}) : super(key: key);
+
+  @override
+  State<LoginPageView> createState() => _LoginPageViewState();
+}
+
+@override
+class _LoginPageViewState extends State<LoginPageView> {
+  void initState() {
+    super.initState();
+    isLogin = SharedPrefs.getIsLogin;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +57,13 @@ class LoginPageView extends StatelessWidget {
                     .then((value) {
                   return value;
                 });
-                isDone == true
-                    ? Get.to(HomePageView())
-                    : print("Kullanıcı adı veya şifre yanlış");
+                if (isDone == true) {
+                  isLogin = true;
+                  print(isLogin.toString());
+                  SharedPrefs.setisLogin(isLogin);
+                  Get.to(HomePageView());
+                } else
+                  print("Kullanıcı adı veya şifre yanlış");
               },
               child: Text("Login",
                   style: GoogleFonts.aBeeZee(

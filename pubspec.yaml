@@ -39,6 +39,9 @@ dependencies:
   firebase_storage: ^10.2.15
   firebase_auth: ^3.3.17
 
+  #local storge
+  shared_preferences: ^2.0.13
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2

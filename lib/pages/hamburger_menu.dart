@@ -1,6 +1,7 @@
 
 import 'package:dev_commit/pages/authentication/login_page.dart';
 import 'package:dev_commit/pages/my_profile.dart';
+import 'package:dev_commit/shared/shared_prefs.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -69,6 +70,7 @@ class HamburgerMenu extends StatelessWidget {
                 shape: const StadiumBorder(),
               ),
               onPressed: () {
+                SharedPrefs.setisLogin(false);
                 Get.offAll(const LoginPageView());
               },
               child: Text('Çıkış Yap',
