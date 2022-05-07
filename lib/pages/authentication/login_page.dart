@@ -1,10 +1,13 @@
-
 import 'package:dev_commit/pages/authentication/register_page.dart';
 import 'package:dev_commit/pages/authentication/widgets/custom_text_field.dart';
 import 'package:dev_commit/pages/home_page.dart';
+import 'package:dev_commit/service/firebase_auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+TextEditingController _emailController = TextEditingController();
+TextEditingController _passwordController = TextEditingController();
 
 class LoginPageView extends StatelessWidget {
   const LoginPageView({Key? key}) : super(key: key);
@@ -20,9 +23,9 @@ class LoginPageView extends StatelessWidget {
             child: Image.asset("assets/images/login_logo.png"),
           ),
           const SizedBox(height: 30),
-          const CustomTextFormField(customHintText: "username"),
+          _emailContainer(),
           const SizedBox(height: 15),
-          const CustomTextFormField(customHintText: "password"),
+          _passwordContainer(),
           const SizedBox(height: 10),
           Text("Forgot your login or password?",
               style: GoogleFonts.aBeeZee(fontSize: 12, color: Colors.grey)),
@@ -35,7 +38,17 @@ class LoginPageView extends StatelessWidget {
                 primary: Colors.cyan,
                 shape: const StadiumBorder(),
               ),
-              onPressed: ()=> Get.to(const HomePageView()),
+              onPressed: () async {
+                bool isDone = false;
+                isDone = await AuthService()
+                    .logIn(_emailController.text, _passwordController.text)
+                    .then((value) {
+                  return value;
+                });
+                isDone == true
+                    ? Get.to(HomePageView())
+                    : print("Kullanıcı adı veya şifre yanlış");
+              },
               child: Text("Login",
                   style: GoogleFonts.aBeeZee(
                     color: Colors.black,
@@ -59,6 +72,60 @@ class LoginPageView extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Container _passwordContainer() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
+      child: TextFormField(
+        controller: _passwordController,
+        textInputAction: TextInputAction.next,
+        style: GoogleFonts.aBeeZee(),
+        decoration: InputDecoration(
+          prefixIcon: const Icon(
+            Icons.person,
+            color: Colors.cyan,
+            size: 30,
+          ),
+          hintText: "password",
+          enabledBorder: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(50)),
+              borderSide: BorderSide(
+                color: Colors.cyan,
+              )),
+          focusedBorder: const OutlineInputBorder(
+              borderSide: BorderSide(),
+              borderRadius: BorderRadius.all(Radius.circular(50))),
+        ),
+      ),
+    );
+  }
+
+  Container _emailContainer() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
+      child: TextFormField(
+        controller: _emailController,
+        textInputAction: TextInputAction.next,
+        style: GoogleFonts.aBeeZee(),
+        decoration: InputDecoration(
+          prefixIcon: const Icon(
+            Icons.person,
+            color: Colors.cyan,
+            size: 30,
+          ),
+          hintText: "mail",
+          enabledBorder: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(50)),
+              borderSide: BorderSide(
+                color: Colors.cyan,
+              )),
+          focusedBorder: const OutlineInputBorder(
+              borderSide: BorderSide(),
+              borderRadius: BorderRadius.all(Radius.circular(50))),
+        ),
       ),
     );
   }
