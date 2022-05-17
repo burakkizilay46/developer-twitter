@@ -12,4 +12,10 @@ class SharedPrefs {
   }
 
   static bool get getIsLogin => _prefs.getBool('isLogin') ?? false;
+
+  static void setUserId(String userId) {
+    _prefs.setString('userId', userId);
+  }
+
+  static String get getUserId => _prefs.getString('userId') ?? "";
 }

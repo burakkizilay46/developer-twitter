@@ -1,4 +1,3 @@
-
 import 'package:dev_commit/pages/authentication/login_page.dart';
 import 'package:dev_commit/pages/my_profile.dart';
 import 'package:dev_commit/shared/shared_prefs.dart';
@@ -28,14 +27,8 @@ class HamburgerMenu extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: CircleAvatar(
                     radius: 50,
-                    backgroundImage: AssetImage('assets/images/user.png'),
-                  ),
-                ),
-                const Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    'Burak Kızılay',
-                    style: TextStyle(color: Colors.white, fontSize: 20.0),
+                    backgroundImage: NetworkImage(
+                        'https://avatars.githubusercontent.com/u/7940844?s=88&v=4'),
                   ),
                 ),
                 Align(
@@ -49,7 +42,7 @@ class HamburgerMenu extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: () => Get.to( MyProfileView()),
+            onTap: () => Get.to(MyProfileView()),
             child: Align(
               child: ListTile(
                 leading: const Icon(Icons.account_circle, size: 36),

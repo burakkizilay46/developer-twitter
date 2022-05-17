@@ -1,5 +1,5 @@
 class Post {
-  int? ownerId;
+  String? ownerId;
   int? postId;
   String? postTitle;
 
@@ -12,7 +12,7 @@ class Post {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['ownerId'] = ownerId;
     data['postId'] = postId;
     data['postTitle'] = postTitle;

@@ -1,5 +1,6 @@
 import 'package:dev_commit/model/post_model.dart';
 import 'package:dev_commit/service/firebase_post_service.dart';
+import 'package:dev_commit/shared/shared_prefs.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -84,7 +85,7 @@ class AddCommitView extends StatelessWidget {
 
   Future<void> addCommit(String _commitMessage) async {
     Post newPost = Post();
-    newPost.ownerId = 2;
+    newPost.ownerId = SharedPrefs.getUserId;
     newPost.postId = 22;
     newPost.postTitle = _commitMessage.toString();
     await FirebasePostService().addPost(newPost).then((value) {

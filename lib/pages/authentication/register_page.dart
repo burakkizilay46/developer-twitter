@@ -1,3 +1,4 @@
+import 'package:dev_commit/constants/firebase_constants.dart';
 import 'package:dev_commit/model/user_model.dart';
 import 'package:dev_commit/pages/authentication/login_page.dart';
 import 'package:dev_commit/pages/authentication/widgets/custom_text_field.dart';
@@ -13,6 +14,8 @@ TextEditingController _emailController = TextEditingController();
 TextEditingController _usernameController = TextEditingController();
 TextEditingController _nameSurnameController = TextEditingController();
 TextEditingController _passwordController = TextEditingController();
+
+late final userID;
 
 class RegisterView extends StatelessWidget {
   @override
@@ -83,8 +86,9 @@ class RegisterView extends StatelessWidget {
         _usernameController.text.isNotEmpty) {
       AuthService()
           .register(_emailController.text, _passwordController.text)
-          .then((value) {
-        addUser();
+          .then((value) async {
+        userID = await AuthService().inputData();
+        addUser(userID);
         _emailController.clear();
         _passwordController.clear();
         _usernameController.clear();
@@ -94,9 +98,10 @@ class RegisterView extends StatelessWidget {
       print("Boş Bırakılamaz");
   }
 
-  Future<void> addUser() async {
+  Future<void> addUser(String uid) async {
     User newUser = User();
-    newUser.userId = 1;
+
+    newUser.userId = uid;
     newUser.email = _emailController.text;
     newUser.username = _usernameController.text;
     newUser.nameSurname = _nameSurnameController.text;
@@ -114,19 +119,19 @@ class RegisterView extends StatelessWidget {
         controller: controller,
         textInputAction: TextInputAction.next,
         style: GoogleFonts.aBeeZee(),
-        decoration: InputDecoration(
-          prefixIcon: const Icon(
+        decoration: const InputDecoration(
+          prefixIcon: Icon(
             Icons.lock,
             color: Colors.cyan,
             size: 30,
           ),
           hintText: 'password',
-          enabledBorder: const OutlineInputBorder(
+          enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(50)),
               borderSide: BorderSide(
                 color: Colors.cyan,
               )),
-          focusedBorder: const OutlineInputBorder(
+          focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(),
               borderRadius: BorderRadius.all(Radius.circular(50))),
         ),
@@ -141,19 +146,19 @@ class RegisterView extends StatelessWidget {
         controller: controller,
         textInputAction: TextInputAction.next,
         style: GoogleFonts.aBeeZee(),
-        decoration: InputDecoration(
-          prefixIcon: const Icon(
+        decoration: const InputDecoration(
+          prefixIcon: Icon(
             Icons.accessibility,
             color: Colors.cyan,
             size: 30,
           ),
           hintText: 'name surname',
-          enabledBorder: const OutlineInputBorder(
+          enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(50)),
               borderSide: BorderSide(
                 color: Colors.cyan,
               )),
-          focusedBorder: const OutlineInputBorder(
+          focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(),
               borderRadius: BorderRadius.all(Radius.circular(50))),
         ),
@@ -168,19 +173,19 @@ class RegisterView extends StatelessWidget {
         controller: controller,
         textInputAction: TextInputAction.next,
         style: GoogleFonts.aBeeZee(),
-        decoration: InputDecoration(
-          prefixIcon: const Icon(
+        decoration: const InputDecoration(
+          prefixIcon: Icon(
             Icons.perm_identity,
             color: Colors.cyan,
             size: 30,
           ),
           hintText: 'username',
-          enabledBorder: const OutlineInputBorder(
+          enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(50)),
               borderSide: BorderSide(
                 color: Colors.cyan,
               )),
-          focusedBorder: const OutlineInputBorder(
+          focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(),
               borderRadius: BorderRadius.all(Radius.circular(50))),
         ),
@@ -195,19 +200,19 @@ class RegisterView extends StatelessWidget {
         controller: controller,
         textInputAction: TextInputAction.next,
         style: GoogleFonts.aBeeZee(),
-        decoration: InputDecoration(
-          prefixIcon: const Icon(
+        decoration: const InputDecoration(
+          prefixIcon: Icon(
             Icons.mail,
             color: Colors.cyan,
             size: 30,
           ),
           hintText: 'email',
-          enabledBorder: const OutlineInputBorder(
+          enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(50)),
               borderSide: BorderSide(
                 color: Colors.cyan,
               )),
-          focusedBorder: const OutlineInputBorder(
+          focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(),
               borderRadius: BorderRadius.all(Radius.circular(50))),
         ),

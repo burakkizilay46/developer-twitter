@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dev_commit/constants/firebase_constants.dart';
 import 'package:dev_commit/pages/add_commit.dart';
+import 'package:dev_commit/pages/authentication/register_page.dart';
 import 'package:dev_commit/pages/custom_widgets/custom_commit_card.dart';
 import 'package:dev_commit/service/firebase_post_service.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +39,10 @@ class _HomePageViewState extends State<HomePageView> {
               itemCount: posts?.length,
               itemBuilder: ((context, index) {
                 Post post = posts![index];
-                return CustomCard(post: post);
+
+                return CustomCard(
+                  post: post,
+                );
               }),
             );
           } else if (snapshot.hasError) {
@@ -51,6 +57,18 @@ class _HomePageViewState extends State<HomePageView> {
         },
       )),
     );
+  }
+
+  Future<void> getUserInfo(String userId) async {
+    FirebaseFirestore.instance
+        .collection('users')
+        .where('userId', isEqualTo: userId)
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        print(element.id);
+      });
+    });
   }
 
   Future<void> getToCommitScreen() async {

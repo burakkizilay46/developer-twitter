@@ -52,7 +52,7 @@ class _MyProfileViewState extends State<MyProfileView>
                           child: Padding(
                             padding: const EdgeInsets.all(2.0),
                             child: Text(
-                              "whoiselonmusk" * 100,
+                              "developertwitter" * 100,
                               textScaleFactor: 0.75,
                               style: GoogleFonts.alegreya(),
                             ),
@@ -67,8 +67,8 @@ class _MyProfileViewState extends State<MyProfileView>
                               children: const [
                                 CircleAvatar(
                                   radius: 50,
-                                  backgroundImage:
-                                      AssetImage('assets/images/user.png'),
+                                  backgroundImage: NetworkImage(
+                                      'https://avatars.githubusercontent.com/u/7940844?s=88&v=4'),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.all(10),
@@ -89,8 +89,14 @@ class _MyProfileViewState extends State<MyProfileView>
               child: TabBarView(
                 controller: tabController,
                 children: [
-                  Container(child: myCommitsWidget()),
-                  Container(child: myCommitsWidget()),
+                  Center(
+                    child:
+                        Container(child: Text('Henüz Commit Bulunmamaktadır')),
+                  ), //myCommitsWidget()),
+                  Center(
+                    child:
+                        Container(child: Text('Henüz Commit Bulunmamaktadır')),
+                  ) //myCommitsWidget()),
                 ],
               ),
             ),

@@ -9,8 +9,13 @@ class FirebasUserService {
   Future<bool> addUser(User newUser) async {
     bool check = false;
     await userRef.add(newUser.toJson()).then((value) async {
+      userRef
+          .doc(newUser.userId)
+          .set(newUser.toJson())
+          .whenComplete(() => print("heble"));
       value != null ? check = true : check = false;
     });
+
     return check;
   }
 }

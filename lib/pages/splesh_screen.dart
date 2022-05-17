@@ -28,11 +28,12 @@ class _SpleshScreenViewState extends State<SpleshScreenView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Lottie.asset('assets/lottie/github-logo.json'),
+            Lottie.asset('assets/lottie/tech.json'),
             Text(
               'Developer Commit',
               style: GoogleFonts.nunito(fontSize: 35),

@@ -23,12 +23,17 @@ class AuthService {
       isDone = await _firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password)
           .then((value) async {
-        print('giriş yapıldı');
         return await value != null ? true : false;
       });
     } on FirebaseException catch (e) {
       print(e.toString());
     }
     return isDone;
+  }
+
+  Future<String> inputData() async {
+    final User loggerUser = await _firebaseAuth.currentUser!;
+    final uid = loggerUser.uid;
+    return uid;
   }
 }
